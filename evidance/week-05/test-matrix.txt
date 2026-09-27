@@ -1,0 +1,49 @@
+TEST MATRIX WEEK 05 - KURSUSKU
+
+1. Load form
+Status Lulus
+Catatan Form pendaftaran dapat dibuka dan seluruh field tampil dengan baik.
+
+2. Required
+Status Lulus
+Catatan Field wajib tidak dapat dikirim jika belum diisi.
+
+3. Email
+Status Lulus
+Catatan Field email menggunakan validasi tipe email.
+
+4. Nama pendek
+Status Lulus
+Catatan Nama minimal 3 karakter sesuai atribut minlength.
+
+5. GET
+Status Lulus
+Catatan Saat method form diubah sementara menjadi GET, parameter form terlihat pada URL setelah tanda .
+
+6. POST
+Status Lulus
+Catatan Setelah dikembalikan ke POST, data pendaftaran berhasil diproses dan parameter tidak tampil sebagai query string pada URL.
+
+7. Radio
+Status Lulus
+Catatan Jenis peserta dapat dipilih menggunakan radio button.
+
+8. Checkbox
+Status Lulus
+Catatan Minat tambahan dapat dipilih menggunakan checkbox.
+
+9. Textarea
+Status Lulus
+Catatan Catatan dapat diisi melalui textarea dengan batas maksimal 300 karakter.
+
+10. Hidden
+Status Lulus
+Catatan Field hidden source=week-05 terkirim bersama data pendaftaran.
+
+11. Mobile
+Status Lulus
+Catatan Form dapat ditampilkan dan digunakan pada tampilan mobile.
+
+12. Navigation
+Status Lulus
+Catatan Link Beranda, Katalog, dan Daftar dapat digunakan untuk berpindah halaman atau bagian.

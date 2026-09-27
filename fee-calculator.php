@@ -29,7 +29,7 @@ $total = hitungTotal($price, $qty, $discount);
 
     <title>Kalkulator Biaya - KursusKu</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>

@@ -66,7 +66,7 @@ $courses = [
 
     <title><?= $siteName ?></title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -75,12 +75,13 @@ $courses = [
     <body>
 
 <header class="site-header">
-    <nav>
-        <a href="#keunggulan">Keunggulan</a>
-        <a href="#katalog">Katalog</a>
-        <a href="#pendaftaran">Pendaftaran</a>
-        <a href="#kontak">Kontak</a>
-    </nav>
+    <nav class="navbar">
+  <div class="container">
+    <a href="index.php">Beranda</a>
+    <a href="index.php#kursus">Katalog</a>
+    <a href="registration.php">Daftar Kursus</a>
+  </div>
+</nav>
 </header>
 
 <main>
@@ -257,4 +258,4 @@ $courses = [
 </main>
 
 </body>
-</html>
+</html>                 
