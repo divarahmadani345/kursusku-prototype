@@ -71,191 +71,194 @@ $courses = [
 
 <body>
 
-<main>
-    <body>
+    <main>
+        <body>
 
-<header class="site-header">
-    <nav class="navbar">
-  <div class="container">
-    <a href="index.php">Beranda</a>
-    <a href="index.php#kursus">Katalog</a>
-    <a href="registration.php">Daftar Kursus</a>
-  </div>
-</nav>
-</header>
+            <header class="site-header">
+                <nav class="navbar">
+                    <div class="container">
+                        <a href="index.php">Beranda</a>
+                        <a href="index.php#kursus">Katalog</a>
+                        <a href="registration.php">Daftar Kursus</a>
+                        <a href="index.php#keunggulan">keunggulan</a>
+                        <a href="index.php#kontak">kontak</a>
+                    </div>
+                </nav>
+            </header>
 
-<main>
-    <section class="hero">
+            <main>
+                <section class="hero">
 
-    <div>
-        <h1><?= $siteName ?></h1>
+                    <div>
+                        <h1><?= $siteName ?></h1>
 
-        <p><?= $tagline ?></p>
+                        <p><?= $tagline ?></p>
 
-        <a href="#katalog" class="cta">
-            Lihat Katalog Kursus
-        </a>
-    </div>
+                        <a href="#katalog" class="cta">
+                            Lihat Katalog Kursus
+                        </a>
+                    </div>
 
-    <div>
-        <img
-            src="assets/images/hero-kursus.jpg"
-            alt="Pembelajaran kursus"
-        >
-    </div>
+                    <div>
+                        <img
+                            src="assets/images/hero-kursus.jpg"
+                            alt="Pembelajaran kursus"
+                        >
+                    </div>
 
-</section>
+                </section>
 
-<section id="video">
+                <section id="video">
 
-    <h2>Video Perkenalan KursusKu</h2>
+                    <h2>Video Perkenalan KursusKu</h2>
 
-    <video controls width="100%">
-        <source src="assets/video/intro-kursus.mp4" type="video/mp4">
-        Browser kamu tidak mendukung video.
-    </video>
+                    <video controls width="100%">
+                        <source
+                            src="assets/video/intro-kursus.mp4"
+                            type="video/mp4"
+                        >
+                        Browser kamu tidak mendukung video.
+                    </video>
 
-</section>
+                </section>
 
+                <!-- KEUNGGULAN -->
+                <section id="keunggulan">
 
-    <!-- KEUNGGULAN -->
-    <section id="keunggulan">
+                    <h2>Mengapa Memilih KursusKu?</h2>
 
-        <h2>Mengapa Memilih KursusKu?</h2>
+                    <article>
+                        <h3>Materi Terarah</h3>
+                        <p>
+                            Materi pembelajaran disusun secara terstruktur
+                            dan mudah diikuti.
+                        </p>
+                    </article>
 
-        <article>
-            <h3>Materi Terarah</h3>
-            <p>
-                Materi pembelajaran disusun secara terstruktur
-                dan mudah diikuti.
-            </p>
-        </article>
+                    <article>
+                        <h3>Belajar dengan Proyek</h3>
+                        <p>
+                            Peserta belajar melalui latihan dan proyek
+                            yang dapat dipraktikkan.
+                        </p>
+                    </article>
 
-        <article>
-            <h3>Belajar dengan Proyek</h3>
-            <p>
-                Peserta belajar melalui latihan dan proyek
-                yang dapat dipraktikkan.
-            </p>
-        </article>
+                    <article>
+                        <h3>Pendampingan Praktik</h3>
+                        <p>
+                            Peserta mendapatkan arahan untuk membantu
+                            memahami praktik pembelajaran.
+                        </p>
+                    </article>
 
-        <article>
-            <h3>Pendampingan Praktik</h3>
-            <p>
-                Peserta mendapatkan arahan untuk membantu
-                memahami praktik pembelajaran.
-            </p>
-        </article>
+                </section>
 
-    </section>
+                <!-- KATALOG KURSUS -->
+                <section id="katalog">
 
+                    <h2>Katalog Kursus</h2>
 
-    <!-- KATALOG KURSUS -->
-    <section id="katalog">
+                    <table>
 
-        <h2>Katalog Kursus</h2>
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Kursus</th>
+                                <th>Biaya</th>
+                                <th>Kuota</th>
+                                <th>Terdaftar</th>
+                                <th>Sisa Kursi</th>
+                                <th>Status</th>
+                                <th>Tanggal Mulai</th>
+                            </tr>
+                        </thead>
 
-        <table>
+                        <tbody>
 
-            <thead>
-                <tr>
-                    <th>Kode</th>
-                    <th>Kursus</th>
-                    <th>Biaya</th>
-                    <th>Kuota</th>
-                    <th>Terdaftar</th>
-                    <th>Sisa Kursi</th>
-                    <th>Status</th>
-                    <th>Tanggal Mulai</th>
-                </tr>
-            </thead>
+                            <?php foreach ($courses as $course): ?>
 
-            <tbody>
+                                <tr>
+                                    <td>
+                                        <?= htmlspecialchars($course['code']) ?>
+                                    </td>
 
-                <?php foreach ($courses as $course): ?>
+                                    <td>
+                                        <?= htmlspecialchars($course['name']) ?>
+                                    </td>
 
-                    <tr>
-                        <td>
-                            <?= htmlspecialchars($course['code']) ?>
-                        </td>
+                                    <td>
+                                        <?= rupiah($course['fee']) ?>
+                                    </td>
 
-                        <td>
-                            <?= htmlspecialchars($course['name']) ?>
-                        </td>
+                                    <td>
+                                        <?= $course['quota'] ?>
+                                    </td>
 
-                        <td>
-                            <?= rupiah($course['fee']) ?>
-                        </td>
+                                    <td>
+                                        <?= $course['registered'] ?>
+                                    </td>
 
-                        <td>
-                            <?= $course['quota'] ?>
-                        </td>
+                                    <td>
+                                        <?= sisaKursi(
+                                            $course['quota'],
+                                            $course['registered']
+                                        ) ?>
+                                    </td>
 
-                        <td>
-                            <?= $course['registered'] ?>
-                        </td>
+                                    <td>
+                                        <?= statusKursus(
+                                            $course['quota'],
+                                            $course['registered']
+                                        ) ?>
+                                    </td>
 
-                        <td>
-                            <?= sisaKursi(
-                                $course['quota'],
-                                $course['registered']
-                            ) ?>
-                        </td>
+                                    <td>
+                                        <?= formatTanggal($course['start_date']) ?>
+                                    </td>
+                                </tr>
 
-                        <td>
-                            <?= statusKursus(
-                                $course['quota'],
-                                $course['registered']
-                            ) ?>
-                        </td>
+                            <?php endforeach; ?>
 
-                        <td>
-                            <?= formatTanggal($course['start_date']) ?>
-                        </td>
-                    </tr>
+                        </tbody>
 
-                <?php endforeach; ?>
+                    </table>
 
-            </tbody>
+                </section>
 
-        </table>
+                <section id="pendaftaran">
 
-    </section>
+                    <h2>Langkah Pendaftaran</h2>
 
-<section id="pendaftaran">
+                    <ol>
+                        <li>Pilih kursus yang ingin diikuti.</li>
+                        <li>Periksa biaya, kuota, dan tanggal mulai kursus.</li>
+                        <li>Lakukan pendaftaran sesuai informasi yang tersedia.</li>
+                        <li>Tunggu konfirmasi dari KursusKu.</li>
+                    </ol>
 
-    <h2>Langkah Pendaftaran</h2>
+                </section>
 
-    <ol>
-        <li>Pilih kursus yang ingin diikuti.</li>
-        <li>Periksa biaya, kuota, dan tanggal mulai kursus.</li>
-        <li>Lakukan pendaftaran sesuai informasi yang tersedia.</li>
-        <li>Tunggu konfirmasi dari KursusKu.</li>
-    </ol>
+                <!-- KONTAK -->
+                <section id="kontak">
 
-</section>
-<!-- KONTAK -->
-<section id="kontak">
+                    <h2>Kontak</h2>
 
-    <h2>Kontak</h2>
+                    <p>Email: info@kursusku.test</p>
+                    <p>Telepon: 0812-3456-7890</p>
 
-    <p>Email: info@kursusku.test</p>
-    <p>Telepon: 0812-3456-7890</p>
+                    <p>
+                        <a href="server-time.php">
+                            Lihat waktu server
+                        </a>
+                    </p>
 
-    <p>
-        <a href="server-time.php">
-            Lihat waktu server
-        </a>
-    </p>
+                </section>
 
-</section>
+                <footer>
+                    <p>&copy; <?= $year ?> KursusKu</p>
+                </footer>
 
-<footer>
-    <p>&copy; <?= $year ?> KursusKu</p>
-</footer>
-    <p>Tahun: <?= $year ?></p>
+            </main>
 
-</main>
-
-</body>
-</html>                 
+        </body>
+</html>
