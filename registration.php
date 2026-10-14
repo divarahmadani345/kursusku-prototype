@@ -412,11 +412,11 @@
 
 
                     <a
-                        href="process-registration.php?loop=lab"
-                        class="btn-link"
+                     href="loop-lab.php"
+                     class="btn-link"
                     >
-                        Loop Lab
-                    </a>
+                    Loop Lab
+</a>
 
                 </div>
 
