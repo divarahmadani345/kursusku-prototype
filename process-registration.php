@@ -52,41 +52,6 @@ if (($_GET['history'] ?? '') === 'dummy') {
         ['name' => 'Budi',  'course' => 'PHP Dasar',   'total' => 350000],
         ['name' => 'Citra', 'course' => 'Laravel Fundamental', 'total' => 425000],
     ];
-  // Mode Loop Lab
-if (($_GET['loop'] ?? '') === 'lab') {
-    ?>
-    <!doctype html>
-    <html lang="id">
-    <head>
-      <meta charset="utf-8">
-      <title>Loop Lab - KursusKu</title>
-      <link rel="stylesheet" href="assets/css/style.css">
-    </head>
-    <body>
-    <main class="container">
-      <h1>Loop Lab</h1>
-
-      <h2>Perulangan for (1 sampai 5)</h2>
-      <ul>
-        <?php for ($i = 1; $i <= 5; $i++): ?>
-          <li>Perulangan ke-<?= $i ?></li>
-        <?php endfor; ?>
-      </ul>
-
-      <h2>Perulangan foreach (daftar kursus)</h2>
-      <ul>
-        <?php foreach ($courses as $c): ?>
-          <li><?= e($c['name']) ?> - Rp <?= number_format($c['fee'], 0, ',', '.') ?></li>
-        <?php endforeach; ?>
-      </ul>
-
-      <a class="btn-link" href="registration.php">Kembali</a>
-    </main>
-    </body>
-    </html>
-    <?php
-    exit; // berhenti di sini
-}
     ?>
     <!doctype html>
     <html lang="id">
