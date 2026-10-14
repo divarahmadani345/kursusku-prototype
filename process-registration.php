@@ -1,17 +1,49 @@
 <?php
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$phone = trim($_POST['phone'] ?? '');
-$studyProgram = trim($_POST['study_program'] ?? '');
-$course = $_POST['course'] ?? '';
-$participantType = $_POST['participant_type'] ?? '';
-$interests = $_POST['interests'] ?? [];
-$note = trim($_POST['note'] ?? '');
-$learningMethod = $_POST['learning_method'] ?? '';
-$packageCount = (int) ($_POST['package_count'] ?? 1);
-$interestText = implode(', ', $interests);
+// ===== Soal No. 27: Cek method POST =====
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: registration.php');
+    exit;
+}
 
-// ini data kursus - harga
+// ===== Soal No. 28: Validasi input =====
+$errors = [];
+
+if (empty($_POST['name'])) {
+    $errors[] = 'Nama wajib diisi.';
+}
+if (empty($_POST['email'])) {
+    $errors[] = 'Email wajib diisi.';
+}
+if (empty($_POST['course'])) {
+    $errors[] = 'Kursus wajib dipilih.';
+}
+
+if (!empty($errors)) {
+    http_response_code(422); // Unprocessable Entity
+    echo '<h1>Error Validasi (422)</h1>';
+    echo '<ul>';
+    foreach ($errors as $err) {
+        echo '<li>' . htmlspecialchars($err) . '</li>';
+    }
+    echo '</ul>';
+    echo '<a href="registration.php">Kembali ke Form</a>';
+    exit;
+}
+
+// ===== Ambil data dari form =====
+$name           = trim($_POST['name'] ?? '');
+$email          = trim($_POST['email'] ?? '');
+$phone          = trim($_POST['phone'] ?? '');
+$studyProgram   = trim($_POST['study_program'] ?? '');
+$course         = $_POST['course'] ?? '';
+$participantType = $_POST['participant_type'] ?? '';
+$interests      = $_POST['interests'] ?? [];
+$note           = trim($_POST['note'] ?? '');
+$learningMethod = $_POST['learning_method'] ?? '';
+$packageCount   = (int) ($_POST['package_count'] ?? 1);
+$interestText   = implode(', ', $interests);
+
+// ===== Data kursus - harga =====
 $courses = [
     'web-dasar'           => ['name' => 'Web Dasar',           'fee' => 300000],
     'php-dasar'           => ['name' => 'PHP Dasar',           'fee' => 350000],
@@ -23,12 +55,12 @@ $courses = [
 
 $courseData = $courses[$course] ?? ['name' => '-', 'fee' => 0];
 $courseName = $courseData['name'];
-$fee = $courseData['fee'];
+$fee        = $courseData['fee'];
 
-// ini l SUBTOTAL = fee × jumlah paket
+// ===== SUBTOTAL = fee × jumlah paket =====
 $subtotal = $fee * $packageCount;
 
-// ini diskon berdasarkan dari tipe peserta
+// ===== Diskon berdasarkan tipe peserta =====
 $discountPercent = 0;
 if ($participantType === 'mahasiswa') {
     $discountPercent = 20;
@@ -39,21 +71,20 @@ if ($participantType === 'mahasiswa') {
 }
 
 $discountAmount = $subtotal * $discountPercent / 100;
-$total = $subtotal - $discountAmount;
+$total          = $subtotal - $discountAmount;
 
-// untuk fungsi escape
+// ===== Fungsi escape =====
 function e($value): string {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
-// Mode History Dummy
+
+// ===== Mode History Dummy =====
 if (($_GET['history'] ?? '') === 'dummy') {
     $history = [
         ['name' => 'Andi',  'course' => 'Web Dasar',   'total' => 240000],
         ['name' => 'Budi',  'course' => 'PHP Dasar',   'total' => 350000],
         ['name' => 'Citra', 'course' => 'Laravel Fundamental', 'total' => 425000],
     ];
-
-    
     ?>
     <!doctype html>
     <html lang="id">
@@ -79,9 +110,10 @@ if (($_GET['history'] ?? '') === 'dummy') {
     </body>
     </html>
     <?php
-    exit; // berhenti di sini, halaman hasil di bawah tidak ikut tampil
+    exit;
 }
-// Mode Loop Lab
+
+// ===== Mode Loop Lab =====
 if (($_GET['loop'] ?? '') === 'lab') {
     ?>
     <!doctype html>
@@ -118,7 +150,7 @@ if (($_GET['loop'] ?? '') === 'lab') {
     </body>
     </html>
     <?php
-    exit; // penting: berhenti di sini supaya halaman hasil tidak ikut tampil
+    exit;
 }
 ?>
 <!doctype html>
